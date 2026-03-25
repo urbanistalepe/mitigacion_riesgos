@@ -16,87 +16,126 @@ output_pdf = os.path.join(output_dir, "presentacion_riesgos.pdf")
 
 marp_template = """\
 ---
-marp: true
+marp: false
 theme: default
 paginate: true
 html: true
-header: "&nbsp;"
-footer: "&nbsp;"
+header: " "
+footer: "Análisis de Emergencias AMG 2019–2023"
 ---
 
-<!-- _class: title -->
 <style>
   section {
     font-family: 'Arial', sans-serif;
-    font-size: 1rem;
+    font-size: 24px;
+    padding: 40px;
   }
-  h1 { font-size: 1.8em; }
-  h2 { font-size: 1.2em; color: #555; }
+  h1 { font-size: 1.6em; color: #1a73e8; line-height: 1.2; border-bottom: none; }
+  h2 { font-size: 1.1em; color: #555; border-bottom: none; margin-top: 5px; }
+  h3 { font-size: 0.9em; color: #777; font-weight: normal; }
+  
+  .participants {
+    font-size: 0.7em;
+    margin-top: 25px;
+    line-height: 1.5;
+  }
+  .participants a { color: #1a73e8; text-decoration: none; }
+
   .tag {
     display: inline-block;
     background: #e8f0fe;
     color: #1a73e8;
     border-radius: 4px;
     padding: 2px 8px;
-    font-size: 0.75em;
+    font-size: 0.7em;
     margin: 2px;
   }
-  table { font-size: 0.85em; width: 100%; }
-  th { background: #1a73e8; color: white; }
+  
+  /* Ajuste de columnas para evitar solapamiento en gráficas */
+  .content-wrapper {
+    display: flex;
+    gap: 30px;
+    align-items: center;
+  }
+  .image-col { flex: 1.8; }
+  .text-col { flex: 1; font-size: 0.95em; }
+
+  /* Estilo para listado de mapas interactivos */
+  .map-list {
+    margin-top: 20px;
+    list-style: none;
+    padding: 0;
+  }
+  .map-list a {
+    display: block;
+    padding: 8px 0;
+    color: #1a73e8;
+    text-decoration: none;
+    font-weight: bold;
+    border-bottom: 1px solid #eee;
+  }
+  
+  img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 4px;
+  }
 </style>
 
-# Histórico de Emergencias
-## Análisis de Tendencias y Concentración Espacial
+# Integración de políticas de mitigación de riesgo en la actualización de instrumentos de planeación municipal
+## Histórico de Emergencias: Análisis de Tendencias y Concentración Espacial
 ### Área Metropolitana de Guadalajara · 2019–2023
+
+<div class="participants">
+
+**Ana Díaz-Aldret** | [orcid.org/0000-0001-5759-7563](http://orcid.org/0000-0001-5759-7563)  
+**Mayra Gamboa González** | [orcid.org/0000-0003-1260-0241](https://orcid.org/0000-0003-1260-0241)  
+**Alejandro Padilla-Lepe** | [orcid.org/0000-0002-8164-7601](https://orcid.org/0000-0002-8164-7601)
+
+</div>
 
 ---
 
 # Introducción
 
-<div style="display: flex; gap: 2rem; align-items: flex-start;">
-
-<div style="flex: 1.2; font-size: 1.1em;">
+<div class="content-wrapper">
+<div style="flex: 1.2;">
 
 - El **Área Metropolitana de Guadalajara (AMG)** concentra más de **5.2 millones** de habitantes distribuidos en 10 municipios.
 - La gestión de emergencias es competencia de las **unidades de Protección Civil** y bomberos municipales.
 - Contar con un **análisis histórico estandarizado** permite identificar patrones, planificar recursos y tomar decisiones basadas en evidencia.
 
 </div>
+<div style="flex: 1; background: #f8f9fa; padding: 1.5rem; border-left: 5px solid #1a73e8;">
 
-<div style="flex: 1; font-size: 1em;">
-
-> ℹ️ **Fuente de datos**
->
-> Registros históricos del Sistema de Emergencias del AMG (2019–2023), con más de **158,000 reportes** georeferenciados.
+**Fuente de datos**
+Registros históricos del Sistema de Emergencias del AMG (2019–2023), con más de **158,000 reportes** georeferenciados.
 
 </div>
-
 </div>
 
 ---
 
 # Objetivos
 
-<div style="display: flex; gap: 2rem; align-items: flex-start;">
-<div style="flex: 1;">
+<div class="content-wrapper">
+<div class="image-col">
 
-## 🎯 Objetivos de análisis
-
+## Objetivos de análisis
 1. Identificar la **tendencia anual** de emergencias en el AMG.
 2. Comparar la **carga por municipio** a lo largo del tiempo.
-3. Detectar los **tipos de incidentes más frecuentes** y su evolución.
-4. Visualizar la **concentración espacial** por año mediante mapas de calor.
-5. Estandarizar la **taxonomía de incidentes** para mejorar la consistencia del reporte.
+3. Detectar los **tipos de incidentes más frecuentes**.
+4. Visualizar la **concentración espacial** por año.
+
 
 </div>
+<div class="text-col">
 
-<div style="flex: 1; padding-top: 1rem;">
-
-| Dimensión | Variable analizada |
+| Dimensión | Variable |
 |---|---|
 | Temporal | Año (2019–2023) |
-| Territorial | Municipio (AMG) |
-| Tipológica | Tipo de incidente |
+| Territorial | Municipio |
+| Tipológica | Incidente |
 | Espacial | Coordenadas XY |
 
 </div>
@@ -106,63 +145,42 @@ footer: "&nbsp;"
 
 # Metodología
 
-<div style="display: flex; gap: 2rem;">
-<div style="flex: 1; font-size: 1.1em;">
-
-### Datos
-- Archivo CSV con codificación **UTF-8**
-- Columnas clave: `fecha`, `Municipio`, `Incidente`, `x`, `y`
+<div class="content-wrapper">
+<div class="image-col">
 
 ### Procesamiento
-- Parsing de fechas y extracción de año
-- **Estandarización de incidentes**: función de normalización con 20+ categorías agrupadas por palabras clave, normalización de acentos con `unicodedata`
-
-### Visualización
-- Gráficas con `matplotlib` / `seaborn`
-- Mapas de calor interactivos con `folium`
+- Se descargaron los reportes de emergencias del sitio web de Zoom Metropolitano.
+- Se generó el archivo CSV.
+- Estandarización de fechas y extracción de año.
+- Estandarización de incidentes con 20+ categorías agrupadas por palabras clave y limpieza de datos.
+- Visualización de mapas interactivos de calor para la determinación de zonas de alta densidad de reportes por año. 
 
 </div>
-<div style="flex: 1; font-size: 0.9em; background: #f8f9fa; padding: 1rem; border-radius: 8px;">
+<div class="text-col" style="background: #f8f9fa; padding: 15px; border-radius: 8px;">
 
-**Categorías de incidentes estandarizadas**
-
-<span class="tag">Incendio Pastizal</span>
-<span class="tag">Incendio Lote Baldío</span>
-<span class="tag">Incendio Casa Habitación</span>
-<span class="tag">Incendio Comercio</span>
-<span class="tag">Incendio Fábrica</span>
-<span class="tag">Incendio Vehículo</span>
-<span class="tag">Gas LP / Fuga</span>
-<span class="tag">Enjambre Abejas/Avispas</span>
-<span class="tag">Accidente Vial</span>
-<span class="tag">Atención Prehospitalaria</span>
-<span class="tag">Rescate de Personas</span>
-<span class="tag">Caída de Árbol</span>
-<span class="tag">Inundación</span>
-<span class="tag">Hundimiento</span>
-<span class="tag">Fauna/Animales</span>
-<span class="tag">Pirotecnia</span>
-<span class="tag">Corto Circuito</span>
-<span class="tag">Gases/Químicos</span>
-<span class="tag">Vigilancia</span>
-<span class="tag">Apoyo Ciudadano</span>
+**Principales categorías estandarizadas**
+<span class="tag">Incendio Pastizal</span> <span class="tag">Gas LP / Fuga</span>
+<span class="tag">Enjambre Abejas</span> <span class="tag">Accidente Vial</span>
+<span class="tag">Atención Prehospitalaria</span> <span class="tag">Rescate</span>
+<span class="tag">Inundación</span> <span class="tag">Corto Circuito</span>
+<span class="tag">Pirotecnia</span> <span class="tag">Fauna/Animales</span>
 
 </div>
 </div>
 
 ---
 
-# Tendencia Global Anual
+# Tendencias
 
-<div style="display: flex; gap: 2rem; align-items: center;">
-<div style="flex: 2;">
+<div class="content-wrapper">
+<div class="image-col">
 
 ![Tendencia anual](analisis_emergencias/tendencia_anual_total.png)
 
 </div>
-<div style="flex: 1; font-size: 1.1em;">
+<div class="text-col">
 
-- El número de emergencias aumentó de manera notable entre 2019 y 2022.
+- El volumen de emergencias aumentó notablemente entre 2019 y 2022.
 - 2019 cuenta con datos parciales (a partir de septiembre).
 - El periodo 2020–2023 muestra la demanda operativa completa.
 
@@ -173,15 +191,15 @@ footer: "&nbsp;"
 
 # Tendencia por Municipio
 
-<div style="display: flex; gap: 2rem; align-items: center;">
-<div style="flex: 2;">
+<div class="content-wrapper">
+<div class="image-col">
 
 ![Tendencia por municipio](analisis_emergencias/tendencia_por_municipio.png)
 
 </div>
-<div style="flex: 1; font-size: 1.05em;">
+<div class="text-col">
 
-- **Guadalajara** y **Zapopan** concentran la mayor carga operativa.
+- **Guadalajara** y **Zapopan** concentran la mayor carga operativa histórica.
 - Municipios como **Tlajomulco** y **El Salto** muestran crecimiento sostenido.
 - El crecimiento refleja la expansión urbana en la periferia del AMG.
 
@@ -192,17 +210,18 @@ footer: "&nbsp;"
 
 # Tendencia por Tipo de Incidente
 
-<div style="display: flex; gap: 2rem; align-items: center;">
-<div style="flex: 2;">
+<div class="content-wrapper">
+<div class="image-col">
 
 ![Tendencia por incidente](analisis_emergencias/tendencia_por_incidente.png)
 
 </div>
-<div style="flex: 1; font-size: 1.05em;">
+<div class="text-col">
 
-- Los **incendios de pastizal** presentan clara **estacionalidad** (temporada de estiaje).
-- Los **enjambres de abejas/avispas** son el segundo tipo más frecuente.
-- El **Gas LP** es una emergencia recurrente y constante a lo largo de todos los años.
+- **Derrame de hidrocarguros**: Derrame de hidrocarburos.
+- **Incendios de pastizal**: Alta estacionalidad (marzo–mayo).
+- **Enjambres**: Segundo incidente en frecuencia absoluta.
+- **Fugas de Gas LP**: Emergencia crítica con presencia constante durante todo el año.
 
 </div>
 </div>
@@ -211,71 +230,47 @@ footer: "&nbsp;"
 
 # Concentración Espacial: Mapas de Calor
 
-Los mapas interactivos permiten identificar **zonas de alta densidad** de reportes para cada año.
+Los mapas interactivos identifican zonas de alta densidad de reportes por año.
 
-<div style="display: flex; flex-wrap: wrap; gap: 1rem; margin-top: 1rem;">
-
-<div style="flex: 1; min-width: 160px; background: #f1f3f4; border-radius: 8px; padding: 1rem; text-align: center;">
-🗺️ <a href="analisis_emergencias/mapa_calor_2019.html"><strong>2019</strong></a>
-</div>
-<div style="flex: 1; min-width: 160px; background: #f1f3f4; border-radius: 8px; padding: 1rem; text-align: center;">
-🗺️ <a href="analisis_emergencias/mapa_calor_2020.html"><strong>2020</strong></a>
-</div>
-<div style="flex: 1; min-width: 160px; background: #f1f3f4; border-radius: 8px; padding: 1rem; text-align: center;">
-🗺️ <a href="analisis_emergencias/mapa_calor_2021.html"><strong>2021</strong></a>
-</div>
-<div style="flex: 1; min-width: 160px; background: #f1f3f4; border-radius: 8px; padding: 1rem; text-align: center;">
-🗺️ <a href="analisis_emergencias/mapa_calor_2022.html"><strong>2022</strong></a>
-</div>
-<div style="flex: 1; min-width: 160px; background: #f1f3f4; border-radius: 8px; padding: 1rem; text-align: center;">
-🗺️ <a href="analisis_emergencias/mapa_calor_2023.html"><strong>2023</strong></a>
+<div class="map-list">
+  <a href="analisis_emergencias/mapa_calor_2019.html">Mapa 2019</a>
+  <a href="analisis_emergencias/mapa_calor_2020.html">Mapa 2020</a>
+  <a href="analisis_emergencias/mapa_calor_2021.html">Mapa 2021</a>
+  <a href="analisis_emergencias/mapa_calor_2022.html">Mapa 2022</a>
+  <a href="analisis_emergencias/mapa_calor_2023.html">Mapa 2023</a>
 </div>
 
-</div>
-
-> 💡 Abrir los archivos `.html` directamente en el navegador para exploración interactiva.
+*Nota: Abrir los archivos HTML para navegación y análisis de clusters.*
 
 ---
 
 # Conclusiones
 
-<div style="font-size: 1.1em;">
-
-1. 📈 **Tendencia creciente**: El volumen de emergencias ha aumentado consistentemente entre 2020 y 2022.
-2. 🏙️ **Concentración urbana**: Guadalajara y Zapopan acumulan más del 50% de los reportes, aunque la periferia (Tlajomulco, El Salto) crece proporcionalmente más.
-3. 🔥 **Incendios estacionales**: Los incendios de pastizal son altamente estacionales (estiaje marzo–mayo), lo que permite anticipar recursos.
-4. 🐝 **Fauna urbana**: Los enjambres de abejas/avispas representan un reto operativo de alta frecuencia.
-5. 📊 **Taxonomía**: La estandarización de la columna `Incidente` permite análisis comparativos que antes no eran posibles.
-
-</div>
+- **Tendencia creciente**: El volumen de emergencias ha aumentado consistentemente entre 2020 y 2022.
+- **Concentración urbana**: Guadalajara y Zapopan acumulan más del 50% de los reportes.
+- **Incendios estacionales**: La recurrencia en el periodo de estiaje permite anticipar la asignación de recursos.
+- **Fauna urbana**: Los enjambres representan un reto operativo de alta frecuencia.
+- **Estandarización**: La taxonomía permite análisis comparativos robustos para la planeación.
 
 ---
 
 # Próximos Pasos
 
-<div style="display: flex; gap: 2rem;">
+<div class="content-wrapper">
 <div style="flex: 1;">
 
 ### Datos
-- Integración de datos 2024 al histórico
-- Incorporar datos socioeconómicos (AGEB, INEGI)
-- Validación de registros duplicados o sin coordenadas
+- Integración de datos 2024.
+- Incorporar datos socioeconómicos de INEGI.
+- Validación de duplicados.
 
 </div>
 <div style="flex: 1;">
 
 ### Análisis
-- Modelado predictivo por temporada
-- Análisis de tiempos de respuesta
-- Clustering espacial de zonas de riesgo
-
-</div>
-<div style="flex: 1;">
-
-### Productos
-- Dashboard interactivo en tiempo real
-- Reporte periódico automatizado
-- Integración con sistemas de despacho
+- Modelado predictivo.
+- Análisis de tiempos de respuesta.
+- Clustering espacial.
 
 </div>
 </div>
@@ -284,24 +279,21 @@ Los mapas interactivos permiten identificar **zonas de alta densidad** de report
 
 # Referencias
 
-<div style="font-size: 1em; line-height: 1.8;">
-
-- **Protección Civil Jalisco** – Registros históricos de atención de emergencias (2019–2023).
-- **INEGI** – Marco Geoestadístico Municipal, Área Metropolitana de Guadalajara.
+- **IMEPLAN** – Zoom metropolitano.
+- **Protección Civil Jalisco** – Registros históricos de atención (2019–2023).
+- **INEGI** – Marco Geoestadístico Municipal, AMG.
 - **IIEG Jalisco** – Indicadores demográficos del AMG.
-- **Folium / Leaflet.js** – Visualización de mapas interactivos. https://python-visualization.github.io/folium/
-- **Seaborn / Matplotlib** – Visualización estadística en Python. https://seaborn.pydata.org
-- **Marp** – Framework de presentaciones en Markdown. https://marp.app
-
-</div>
-
+<!--
+- **Folium / Leaflet.js** – Visualización de mapas interactivos.
+- **Seaborn / Matplotlib** – Visualización estadística en Python.
+- **Marp** – Framework de presentaciones Markdown.
+-->
 ---
-
-<!-- _class: title -->
 
 # Gracias
 
-### Área Metropolitana de Guadalajara · Análisis de Emergencias 2019–2023
+### Integración de políticas de mitigación de riesgo
+Análisis de Emergencias AMG 2019–2023
 
 """
 
