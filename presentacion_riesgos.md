@@ -174,8 +174,9 @@ Registros históricos del Sistema de Emergencias del AMG (2019–2023), con más
 - Se descargaron los reportes de emergencias del sitio web de Zoom Metropolitano.
 - Se generó el archivo CSV.
 - Estandarización de fechas y extracción de año.
-- Estandarización de incidentes con 20+ categorías agrupadas por palabras clave y limpieza de datos.
-- Visualización de mapas interactivos de calor para la determinación de zonas de alta densidad de reportes por año. 
+- Estandarización de incidentes con 20+ categorías agrupadas por palabras clave.
+- Ejecución de clustering espacial (**DBSCAN**) para identificación de núcleos críticos.
+- Análisis de **niveles de priorización** estatal y municipal para sitios recurrentes.
 
 </div>
 <div class="text-col" style="background: #f8f9fa; padding: 15px; border-radius: 8px;">
@@ -320,6 +321,49 @@ Los mapas interactivos identifican zonas de alta densidad de reportes por año.
 
 ---
 
+# Priorización de Sitios Recurrentes (2022-2023)
+
+<div class="content-wrapper">
+<div class="image-col">
+
+![Sitios por municipio](analisis_priorizacion/sitios_por_municipio.png)
+
+</div>
+<div class="text-col">
+
+### Análisis de Priorización
+- Se analizaron **1,037 registros** de sitios recurrentes documentados.
+- **Zapopan** y **Guadalajara** concentran la mayor densidad de sitios que requieren intervención técnica.
+- El análisis integra variables de recurrencia y nivel de riesgo reportado.
+
+</div>
+</div>
+
+---
+
+# Niveles de Priorización en el AMG
+
+<div class="content-wrapper">
+<div class="image-col">
+
+![Distribución Prioridades](analisis_priorizacion/distribucion_prioridades.png)
+
+</div>
+<div class="text-col" style="background: #f8f9fa; padding: 15px; border-radius: 8px;">
+
+**Hallazgos Clave**
+- Los niveles **Media** y **Alta** predominan en las zonas de expansión urbana.
+- Existe una alta correlación entre los clusters de emergencias históricas y los sitios priorizados.
+
+<div class="map-list" style="margin-top: 20px;">
+  <a href="analisis_priorizacion/mapa_priorizacion_interactivo.html">Ver Mapa Interactivo de Priorización</a>
+</div>
+
+</div>
+</div>
+
+---
+
 # Conclusiones
 
 - **Tendencia creciente**: El volumen de emergencias ha aumentado consistentemente entre 2020 y 2022.
@@ -329,6 +373,8 @@ Los mapas interactivos identifican zonas de alta densidad de reportes por año.
 - **Zonas críticas (Clusters)**: El análisis DBSCAN identifica núcleos persistentes de alta densidad, fundamentando la priorización espacial en los programas de mitigación.
 - **Estandarización**: Permite análisis comparativos robustos para la planeación académica y gubernamental.
 
+
+<!--
 ---
 
 # Próximos Pasos
@@ -345,13 +391,13 @@ Los mapas interactivos identifican zonas de alta densidad de reportes por año.
 <div style="flex: 1;">
 
 ### Análisis
-- Modelado predictivo.
-- Análisis de tiempos de respuesta.
-- Clustering espacial.
+- Modelado predictivo de impacto.
+- Análisis de tiempos de respuesta por zona.
+- Integración de indicadores de vulnerabilidad social (INEGI).
 
 </div>
 </div>
-
+-->
 ---
 
 # Referencias
