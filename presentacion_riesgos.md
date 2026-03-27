@@ -33,14 +33,37 @@ footer: "Análisis de Emergencias AMG 2019–2023"
     margin: 2px;
   }
   
-  /* Ajuste de columnas para evitar solapamiento en gráficas */
+  /* Ajuste de columnas para evitar desbordamiento */
   .content-wrapper {
-    display: flex;
-    gap: 30px;
-    align-items: center;
+    display: grid;
+    grid-template-columns: 1.6fr 1.2fr;
+    gap: 20px;
+    align-items: start;
+    margin-top: 10px;
   }
-  .image-col { flex: 1.8; }
-  .text-col { flex: 1; font-size: 0.95em; }
+  
+  .image-col {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+  }
+  
+  .image-col img {
+    max-height: 420px;
+    max-width: 100%;
+    object-fit: contain;
+    border: 1px solid #eee;
+  }
+
+  .text-col {
+    font-size: 0.8em;
+    line-height: 1.35;
+  }
+  
+  .text-col h3 {
+    margin: 0 0 8px 0;
+    font-size: 1.1em;
+  }
 
   /* Estilo para listado de mapas interactivos */
   .map-list {
@@ -55,6 +78,30 @@ footer: "Análisis de Emergencias AMG 2019–2023"
     text-decoration: none;
     font-weight: bold;
     border-bottom: 1px solid #eee;
+  }
+  
+  /* Formato de Tablas Compacto */
+  table {
+    width: 100%;
+    font-size: 0.85em;
+    border-collapse: collapse;
+    margin: 8px 0;
+    border: 1px solid #e0e0e0;
+    table-layout: auto;
+  }
+  th {
+    background-color: #f1f3f4;
+    color: #1a73e8;
+    padding: 6px;
+    text-align: left;
+    border-bottom: 2px solid #1a73e8;
+  }
+  td {
+    padding: 4px 6px;
+    border-bottom: 1px solid #eee;
+  }
+  tr:nth-child(even) {
+    background-color: #fafafa;
   }
   
   img {
@@ -177,6 +224,7 @@ Registros históricos del Sistema de Emergencias del AMG (2019–2023), con más
 - Estandarización de incidentes con 20+ categorías agrupadas por palabras clave.
 - Ejecución de clustering espacial (**DBSCAN**) para identificación de núcleos críticos.
 - Análisis de **niveles de priorización** estatal y municipal para sitios recurrentes.
+- Evaluación de **vulnerabilidad física ante incendios** y marginación urbana.
 
 </div>
 <div class="text-col" style="background: #f8f9fa; padding: 15px; border-radius: 8px;">
@@ -321,6 +369,160 @@ Los mapas interactivos identifican zonas de alta densidad de reportes por año.
 
 ---
 
+# Expansión Urbana y Estructura Vial Primaria
+
+<div class="content-wrapper">
+<div class="image-col">
+
+![Crecimiento Urbano](analisis_territorial/mapa_expansion_vialidades.png)
+
+</div>
+<div class="text-col">
+
+### Dinámica Territorial
+- La superficie urbana se ha duplicado desde **1990**, alcanzando los **1,107 km²** en 2015.
+- El **Sistema Vial Primario (VP)** articula el crecimiento hacia el sur y noreste del AMG.
+
+| Periodo | Área (km²) |
+| :--- | :---: |
+| 1990 | 538.31 |
+| 2000 | 690.90 |
+| 2010 | 824.10 |
+| **2015** | **1,106.99** |
+
+</div>
+</div>
+
+---
+
+# Grado de Marginación Urbana (2020)
+
+<div class="content-wrapper">
+<div class="image-col">
+
+![Marginación](analisis_territorial/mapa_marginacion_urbana.png)
+
+</div>
+<div class="text-col">
+
+### Vulnerabilidad por Colonia
+- Se analizaron **1,991 colonias** en el AMG.
+- **340 colonias** presentan grados de marginación **Altos o Muy altos**, localizándose mayoritariamente en las periferias.
+- Existe una superposición entre la baja calidad de servicios y las zonas vulnerables a inundaciones.
+
+| Grado | Colonias |
+| :--- | :---: |
+| Muy alto | 41 |
+| Alto | 299 |
+| Medio | 518 |
+| Bajo | 570 |
+| Muy bajo | 563 |
+
+</div>
+</div>
+
+---
+
+# Vulnerabilidad Física ante Incendios
+
+<div class="content-wrapper">
+<div class="image-col">
+
+![Vulnerabilidad Incendios](analisis_riesgo/mapa_vulnerabilidad_incendios.png)
+
+</div>
+<div class="text-col">
+
+### Riesgos por Exposición
+- Se evaluaron **3,020 km²** del territorio metropolitano.
+- El **39%** de la superficie analizada presenta vulnerabilidad **Alta o Muy alta**.
+- La identificación de estas zonas permite orientar políticas de protección civil y ordenamiento territorial.
+
+| Nivel | Superficie (km²) |
+| :--- | :---: |
+| Muy alta | 438.10 |
+| Alta | 744.81 |
+| Media | 333.15 |
+| Baja | 731.31 |
+| Muy baja | 772.95 |
+
+</div>
+</div>
+
+---
+
+# Cruce 1: Huella Urbana vs. Incendios
+
+<div class="content-wrapper">
+<div class="image-col">
+
+![Cruce Huella](analisis_cruces/mapa_cruce_huella_incendio.png)
+
+</div>
+<div class="text-col">
+
+### Análisis de Exposición
+- Se analizó la intersección de la huella urbana 2015 con las zonas de riesgo de incendio.
+- **26.8 km²** de la ciudad se encuentran bajo riesgo directo.
+- Representa el **2.4%** de la mancha urbana total, principalmente en zonas de interfase.
+
+| Variable | Valor |
+| :--- | :---: |
+| Área Urbana 2015 | 1,107 km² |
+| Área en Riesgo | 26.77 km² |
+| % Expuesta | 2.4% |
+
+</div>
+</div>
+
+---
+
+# Cruce 2: Marginación vs. Incendios
+
+<div class="content-wrapper">
+<div class="image-col">
+
+![Cruce Marginación](analisis_cruces/mapa_cruce_marginacion_incendio.png)
+
+</div>
+<div class="text-col">
+
+### Triple Vulnerabilidad
+- Se cruzaron colonias con **Marginación Alta/Muy Alta** y riesgo de incendio.
+- **57 colonias críticas** se localizan en zonas de alta vulnerabilidad física.
+- Estas áreas requieren atención prioritaria por su limitada capacidad de respuesta.
+
+| Categoría | Cantidad |
+| :--- | :---: |
+| Colonias Críticas | 340 |
+| En Riesgo Incendio | 57 |
+| % Colonias | 16.8% |
+
+</div>
+</div>
+
+---
+
+# Cruce 3: Inundación vs. Incendio
+
+<div class="content-wrapper">
+<div class="image-col">
+
+![Cruce Sitios](analisis_cruces/mapa_cruce_sitios_incendio.png)
+
+</div>
+<div class="text-col">
+
+### Diferenciación de Riesgos
+- Se contrastaron los **sitios recurrentes de inundación** con la vulnerabilidad a incendios.
+- **Resultado**: 0 coincidencias detectadas entre los 1,037 sitios.
+- Esto confirma una **separación geoespacial** clara entre los riesgos hídricos (fondo de valle) y de incendio (laderas/bosque).
+
+</div>
+</div>
+
+---
+
 # Priorización de Sitios Recurrentes (2022-2023)
 
 <div class="content-wrapper">
@@ -371,6 +573,9 @@ Los mapas interactivos identifican zonas de alta densidad de reportes por año.
 - **Incendios estacionales**: La recurrencia en el periodo de estiaje permite anticipar la asignación de recursos.
 - **Fauna urbana**: Los enjambres representan un reto operativo de alta frecuencia.
 - **Zonas críticas (Clusters)**: El análisis DBSCAN identifica núcleos persistentes de alta densidad, fundamentando la priorización espacial en los programas de mitigación.
+- **Expansión y Exposición**: El crecimiento de la huella urbana (duplicada desde 1990) y la extensión del sistema vial primario incrementan la exposición en zonas de reciente consolidación.
+- **Vulnerabilidad Social**: Los altos grados de marginación en la periferia agudizan el impacto de las emergencias recurrentes (57 colonias críticas en riesgo de incendio).
+- **Diferenciación de Riesgos**: El análisis de cruces confirma una clara separación geográfica entre riesgos de inundación e incendio, permitiendo el diseño de estrategias territoriales diferenciadas.
 - **Estandarización**: Permite análisis comparativos robustos para la planeación académica y gubernamental.
 
 
