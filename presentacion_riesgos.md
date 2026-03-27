@@ -147,7 +147,7 @@ footer: "Análisis de Emergencias AMG 2019–2023"
 </style>
 
 # Integración de políticas de mitigación de riesgo en la actualización de instrumentos de planeación municipal
-## Histórico de Emergencias: Análisis de Tendencias y Concentración Espacial
+## Histórico de huella urbana, marginación y emergencias
 ### Área Metropolitana de Guadalajara · 2019–2023
 
 <div class="participants">
@@ -219,8 +219,7 @@ Registros históricos del Sistema de Emergencias del AMG (2019–2023), con más
 
 ### Procesamiento
 - Se descargaron los reportes de emergencias del sitio web de Zoom Metropolitano.
-- Se generó el archivo CSV.
-- Estandarización de fechas y extracción de año.
+- Se generó el archivo CSV y estandarización de fechas y extracción de año.
 - Estandarización de incidentes con 20+ categorías agrupadas por palabras clave.
 - Ejecución de clustering espacial (**DBSCAN**) para identificación de núcleos críticos.
 - Análisis de **niveles de priorización** estatal y municipal para sitios recurrentes.
@@ -237,134 +236,6 @@ Registros históricos del Sistema de Emergencias del AMG (2019–2023), con más
 <span class="tag">Pirotecnia</span> <span class="tag">Fauna/Animales</span>
 
 </div>
-</div>
-
----
-
-# Tendencias
-
-<div class="content-wrapper">
-<div class="image-col">
-
-![Tendencia anual](analisis_emergencias/tendencia_anual_total.png)
-
-</div>
-<div class="text-col">
-
-- El volumen de emergencias aumentó notablemente entre 2019 y 2022.
-- 2019 cuenta con datos parciales (a partir de septiembre).
-- El periodo 2020–2023 muestra la demanda operativa completa.
-
-</div>
-</div>
-
----
-
-# Tendencia por Municipio
-
-<div class="content-wrapper">
-<div class="image-col">
-
-![Tendencia por municipio](analisis_emergencias/tendencia_por_municipio.png)
-
-</div>
-<div class="text-col">
-
-- **Guadalajara** y **Zapopan** concentran la mayor carga operativa histórica.
-- Municipios como **Tlajomulco** y **El Salto** muestran crecimiento sostenido.
-- El crecimiento refleja la expansión urbana en la periferia del AMG.
-
-</div>
-</div>
-
----
-
-# Tendencia por Tipo de Incidente
-
-<div class="content-wrapper">
-<div class="image-col">
-
-![Tendencia por incidente](analisis_emergencias/tendencia_por_incidente.png)
-
-</div>
-<div class="text-col">
-
-- **Derrame de hidrocarguros**: Derrame de hidrocarburos.
-- **Incendios de pastizal**: Alta estacionalidad (marzo–mayo).
-- **Enjambres**: Segundo incidente en frecuencia absoluta.
-- **Fugas de Gas LP**: Emergencia crítica con presencia constante durante todo el año.
-
-</div>
-</div>
-
----
-
-# Concentración Espacial: Mapas de Calor
-
-Los mapas interactivos identifican zonas de alta densidad de reportes por año.
-
-<div class="map-list">
-  <a href="analisis_emergencias/mapa_calor_2019.html">Mapa 2019</a>
-  <a href="analisis_emergencias/mapa_calor_2020.html">Mapa 2020</a>
-  <a href="analisis_emergencias/mapa_calor_2021.html">Mapa 2021</a>
-  <a href="analisis_emergencias/mapa_calor_2022.html">Mapa 2022</a>
-  <a href="analisis_emergencias/mapa_calor_2023.html">Mapa 2023</a>
-</div>
-
-*Nota: Abrir los archivos HTML para navegación y análisis de clusters.*
-
----
-
-# Análisis de Clustering Espacial (DBSCAN)
-
-<div class="content-wrapper">
-<div class="image-col">
-
-![Resumen clustering](analisis_emergencias/clustering_resumen.png)
-
-</div>
-<div class="text-col">
-
-### Metodología
-- Se utilizó el algoritmo **DBSCAN** para detectar concentraciones de alta densidad.
-- **Parámetros**: EPS de ~400m y un mínimo de 30 reportes por zona.
-- **Objetivo**: Diferenciar entre incidentes aislados (ruido) y núcleos operativos recurrentes.
-
-</div>
-</div>
-
----
-
-# Evolución de Clusters: 2019–2021
-
-<div class="cluster-grid">
-  <div class="cluster-item">
-    <img src="analisis_emergencias/clustering_2019.png">
-    <p>2019</p>
-  </div>
-  <div class="cluster-item">
-    <img src="analisis_emergencias/clustering_2020.png">
-    <p>2020</p>
-  </div>
-  <div class="cluster-item">
-    <img src="analisis_emergencias/clustering_2021.png">
-    <p>2021</p>
-  </div>
-</div>
-
----
-
-# Evolución de Clusters: 2022–2023
-
-<div class="cluster-grid">
-  <div class="cluster-item">
-    <img src="analisis_emergencias/clustering_2022.png">
-    <p>2022</p>
-  </div>
-  <div class="cluster-item">
-    <img src="analisis_emergencias/clustering_2023.png">
-    <p>2023</p>
-  </div>
 </div>
 
 ---
@@ -566,6 +437,134 @@ Los mapas interactivos identifican zonas de alta densidad de reportes por año.
 
 ---
 
+# Tendencias
+
+<div class="content-wrapper">
+<div class="image-col">
+
+![Tendencia anual](analisis_emergencias/tendencia_anual_total.png)
+
+</div>
+<div class="text-col">
+
+- El volumen de emergencias aumentó notablemente entre 2019 y 2022.
+- 2019 cuenta con datos parciales (a partir de septiembre).
+- El periodo 2020–2023 muestra la demanda operativa completa.
+
+</div>
+</div>
+
+---
+
+# Tendencia por Municipio
+
+<div class="content-wrapper">
+<div class="image-col">
+
+![Tendencia por municipio](analisis_emergencias/tendencia_por_municipio.png)
+
+</div>
+<div class="text-col">
+
+- **Guadalajara** y **Zapopan** concentran la mayor carga operativa histórica.
+- Municipios como **Tlajomulco** y **El Salto** muestran crecimiento sostenido.
+- El crecimiento refleja la expansión urbana en la periferia del AMG.
+
+</div>
+</div>
+
+---
+
+# Tendencia por Tipo de Incidente
+
+<div class="content-wrapper">
+<div class="image-col">
+
+![Tendencia por incidente](analisis_emergencias/tendencia_por_incidente.png)
+
+</div>
+<div class="text-col">
+
+- **Derrame de hidrocarguros**: Derrame de hidrocarburos.
+- **Incendios de pastizal**: Alta estacionalidad (marzo–mayo).
+- **Enjambres**: Segundo incidente en frecuencia absoluta.
+- **Fugas de Gas LP**: Emergencia crítica con presencia constante durante todo el año.
+
+</div>
+</div>
+
+---
+
+# Concentración Espacial: Mapas de Calor
+
+Los mapas interactivos identifican zonas de alta densidad de reportes por año.
+
+<div class="map-list">
+  <a href="analisis_emergencias/mapa_calor_2019.html">Mapa 2019</a>
+  <a href="analisis_emergencias/mapa_calor_2020.html">Mapa 2020</a>
+  <a href="analisis_emergencias/mapa_calor_2021.html">Mapa 2021</a>
+  <a href="analisis_emergencias/mapa_calor_2022.html">Mapa 2022</a>
+  <a href="analisis_emergencias/mapa_calor_2023.html">Mapa 2023</a>
+</div>
+
+*Nota: Abrir los archivos HTML para navegación y análisis de clusters.*
+
+---
+
+# Análisis de Clustering Espacial (DBSCAN)
+
+<div class="content-wrapper">
+<div class="image-col">
+
+![Resumen clustering](analisis_emergencias/clustering_resumen.png)
+
+</div>
+<div class="text-col">
+
+### Metodología
+- Se utilizó el algoritmo **DBSCAN** para detectar concentraciones de alta densidad.
+- **Parámetros**: EPS de ~400m y un mínimo de 30 reportes por zona.
+- **Objetivo**: Diferenciar entre incidentes aislados (ruido) y núcleos operativos recurrentes.
+
+</div>
+</div>
+
+---
+
+# Evolución de Clusters: 2019–2021
+
+<div class="cluster-grid">
+  <div class="cluster-item">
+    <img src="analisis_emergencias/clustering_2019.png">
+    <p>2019</p>
+  </div>
+  <div class="cluster-item">
+    <img src="analisis_emergencias/clustering_2020.png">
+    <p>2020</p>
+  </div>
+  <div class="cluster-item">
+    <img src="analisis_emergencias/clustering_2021.png">
+    <p>2021</p>
+  </div>
+</div>
+
+---
+
+# Evolución de Clusters: 2022–2023
+
+<div class="cluster-grid">
+  <div class="cluster-item">
+    <img src="analisis_emergencias/clustering_2022.png">
+    <p>2022</p>
+  </div>
+  <div class="cluster-item">
+    <img src="analisis_emergencias/clustering_2023.png">
+    <p>2023</p>
+  </div>
+</div>
+
+---
+
 # Conclusiones
 
 - **Tendencia creciente**: El volumen de emergencias ha aumentado consistentemente entre 2020 y 2022.
@@ -620,5 +619,5 @@ Los mapas interactivos identifican zonas de alta densidad de reportes por año.
 
 # Gracias
 
-### Integración de políticas de mitigación de riesgo
+### Integración de políticas de mitigación de riesgo en la actualización de instrumentos de planeación municipal
 Análisis de Emergencias AMG 2019–2023
